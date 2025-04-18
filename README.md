@@ -23,7 +23,7 @@
 
 ### 📫 Let’s connect
 
-- 💼 [LinkedIn](https://www.linkedin.com/in/arielabade/)  
+- 💼 [LinkedIn](https://www.linkedin.com/in/ariel-abade-669869171/)  
 - 💻 [GitHub](https://github.com/arielabade)  
 
 
