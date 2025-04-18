@@ -1,13 +1,31 @@
-### Hi there 👋
+# 👋 Hi, I like to help machines to think.
+
+---
+
+### 💡 About Me
 
 
+- 🧪 **Data Science**, **Machine Learning**, and **LLM (Large Language Model) Engineering**  
+- 🌎 Passionate about **open source** and projects that create real **social impact**  
+- 🧬 Special interest in **Performance Marketing**, **Automation**, **Investigative Data Science**, and **Performance-Driven Data Science**
+- 🇧🇷 Based in **Brazil**
 
-- 🔭 Hi, I'm currently working on as a Paid Media Analyst.
-- 🌱 I’m currently learning about data science and development with python.
-- 💬 I have interest in open source project that generate social impact and make people lives easier.
-- 🧠 Bioinformatics, selling and machine learnning are the areas which I have more interest.
-- 📫 You can reach me on [Linkedin](https://www.linkedin.com/in/ariel-bandeira-669869171/)
--  🇧🇷 Located in Sergipe, Brasil.
+---
+
+### 🛠️ What I'm Building
+
+- 📊 Exploratory Data Analysis & Visualization Projects  
+- 🤖 ML models for classification, prediction, and sequence analysis  
+- 🧠 Experiments with Transformers, LLM APIs, and NLP pipelines  
+- ⚙️ Workflow automation using Python and GitHub Actions  
+
+---
+
+### 📫 Let’s connect
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/arielabade/)  
+- 💻 [GitHub](https://github.com/arielabade)  
+
 
 ## 🌐 Socials:
  [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ariel-bandeira-669869171/?locale=en_US) [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@@arielabadebandeira) [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/arielAbade) 
