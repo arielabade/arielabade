@@ -36,6 +36,7 @@ layer only makes sense because the previous one is trustworthy.
 | **01** | [tracking-attribution-lab](https://github.com/arielabade/tracking-attribution-lab) | Can this number be trusted? Event lifecycle, UTM governance, quality checks in SQL. |
 | **02** | [marketing-analytics-portfolio](https://github.com/arielabade/marketing-analytics-portfolio) | What changed, what matters, what follows? KPI definitions and a case format that ends in a limitation. |
 | **03** | [paid-media-budget-optimizer](https://github.com/arielabade/paid-media-budget-optimizer) | Where does the next unit of budget go? Transparent scoring over spend, return, volume and headroom. |
+| **04** | [growth-analytics-warehouse](https://github.com/arielabade/growth-analytics-warehouse) | **Featured.** Where does paid media pay back, what would a free limit do, who upgrades next? Synthetic freemium SaaS: seeded generator, tested pipeline, DuckDB snowflake warehouse, SQL catalog, analysis and Dash app with monitoring. |
 
 ### Spatial track — from movement to operation
 
