@@ -1,142 +1,116 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/header-dark.svg">
-    <img alt="Ariel Abade — I build the measurement, analysis and allocation layers that turn signal into decisions" src="assets/brand/header-light.svg" width="100%">
-  </picture>
-</p>
+# Ariel Abade
 
-<p align="center">
-  <img alt="Focus: growth and analytics engineering" src="https://img.shields.io/badge/focus-growth_%2B_analytics_engineering-5B6CFF?style=flat-square&labelColor=050505">
-  <img alt="Based in Brazil" src="https://img.shields.io/badge/based_in-Brazil-7E8791?style=flat-square&labelColor=050505">
-  <a href="https://www.linkedin.com/in/ariel-abade-669869171/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-connect-7E8791?style=flat-square&labelColor=050505"></a>
-</p>
+**Growth, data science and machine learning applied to revenue.**
 
-**Data becomes a decision or it becomes decoration.** I work at the intersection of machine learning,
-analytics, software and business performance — building the layers that turn measured behaviour into
-an action someone can actually take.
+I build the layers between marketing activity and the money it produces: measurement that can be
+trusted, analysis that survives being questioned, and models that end in a decision someone can act
+on. Around five years across paid media, SaaS growth and analytics, mostly in businesses where the
+marketing number and the finance number had to agree.
+
+What I am useful for is the join: connecting campaign behaviour to CAC, LTV, payback and contribution
+margin, and then building the thing that computes it rather than stopping at the recommendation.
 
 ---
 
-## The portfolio as one system
+## Featured projects
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/map-dark.svg">
-    <img alt="Portfolio map: growth, spatial, products, research and foundations tracks" src="assets/brand/map-light.svg" width="100%">
-  </picture>
-</p>
+### [unit-economics-olist](https://github.com/arielabade/unit-economics-olist)
+**Business problem** · Which acquisition channels pay for themselves in a marketplace, where the
+platform keeps a commission rather than the GMV.
+**Key result** · 97.0% of customers buy exactly once, so CAC has to clear on the first order. At a 15%
+take rate, contribution margin is R$16.13 per customer — a hard ceiling that paid channels consume
+71% of.
+**Stack** · DuckDB, SQL, Python, Streamlit.
 
-These repositories are not a list of exercises. Two of them are **sequential tracks**, where each
-layer only makes sense because the previous one is trustworthy.
+### [clv-cohort-prediction](https://github.com/arielabade/clv-cohort-prediction)
+**Business problem** · Who deserves retention budget, predicted from behaviour before the spend
+happens.
+**Key result** · BG/NBD + Gamma-Gamma beat LightGBM on every measure (MAE £484 vs £645, Spearman
+0.601 vs 0.485) and its decile ranking is monotonic where LightGBM's bottom decile is worth more than
+its middle. Top decile captures 51.2% of holdout value.
+**Stack** · PyMC-Marketing, LightGBM, pandas.
 
-### Growth track — from event to budget
+### [lead-scoring-api](https://github.com/arielabade/lead-scoring-api)
+**Business problem** · Which leads a call centre works first, scored before anyone picks up the phone.
+**Key result** · The AUC this dataset is usually reported with, 0.954, becomes 0.640 once call
+duration and the macroeconomic time proxies are removed. What survives is a 1.54x lift on call
+ordering: 30% of capacity reaches 46% of conversions.
+**Stack** · LightGBM, FastAPI, Docker, MLflow, scikit-learn.
 
-| | Repository | What it decides |
-| --- | --- | --- |
-| **01** | [tracking-attribution-lab](https://github.com/arielabade/tracking-attribution-lab) | Can this number be trusted? Event lifecycle, UTM governance, quality checks in SQL. |
-| **02** | [marketing-analytics-portfolio](https://github.com/arielabade/marketing-analytics-portfolio) | What changed, what matters, what follows? KPI definitions and a case format that ends in a limitation. |
-| **03** | [paid-media-budget-optimizer](https://github.com/arielabade/paid-media-budget-optimizer) | Where does the next unit of budget go? Transparent scoring over spend, return, volume and headroom. |
-| **04** | [growth-analytics-warehouse](https://github.com/arielabade/growth-analytics-warehouse) | **Featured.** Where does paid media pay back, what would a free limit do, who upgrades next? Synthetic freemium SaaS: seeded generator, tested pipeline, DuckDB snowflake warehouse, SQL catalog, analysis and Dash app with monitoring. |
+### [marketing-mix-modeling](https://github.com/arielabade/marketing-mix-modeling)
+**Business problem** · How much revenue each channel actually caused, and where the next unit of
+budget should go.
+**Key result** · Fitted against a simulated process with known parameters, which is the only way to
+score an MMM rather than admire it. The model recovers the channels that carry signal and fails
+completely on one that does not — and a signal-to-noise diagnostic identifies which is which before
+fitting.
+**Stack** · PyMC-Marketing, PyMC, pandas.
 
-### Spatial track — from movement to operation
+### [churn-cost-sensitive](https://github.com/arielabade/churn-cost-sensitive)
+**Business problem** · Who gets a retention offer, when the offer costs money and only works some of
+the time.
+**Key result** · The break-even churn probability ranges from 2.7% to 19.6% across customers, so no
+global cutoff can express it. Choosing the threshold from retention economics instead of the 0.5
+default recovers £10,285 — 21% of achievable value.
+**Stack** · LightGBM, scikit-learn, pandas.
 
-| | Repository | What it decides |
-| --- | --- | --- |
-| **01** | [visppy-cv-lab](https://github.com/arielabade/visppy-cv-lab) | When does movement become a countable event? |
-| **02** | [spatial-analytics-dashboard](https://github.com/arielabade/spatial-analytics-dashboard) | Which zone should operations act on? |
-
-### Products
-
-| Repository | Context |
-| --- | --- |
-| [visppy-cv](https://github.com/arielabade/visppy-cv) | Spatial intelligence for physical spaces. Selected in the Centelha Sergipe III preliminary Phase 2 result. [visppy.com](https://visppy.com) |
-| [mandacaru](https://github.com/arielabade/mandacaru) | Intelligent document processing for higher education, developed in the STI/UFS context. |
-
-### Research
-
-| Repository | Context |
-| --- | --- |
-| [carbon](https://github.com/arielabade/carbon) | Exon and intron classification in human DNA with a bidirectional LSTM. Developed for a paper accepted at a bioinformatics conference in Portugal. |
-| [echo-womens-health-research-analytics](https://github.com/arielabade/echo-womens-health-research-analytics) | Survey-based evaluation of a remote women's health training initiative. Aggregate outputs only. |
-
-### Foundations
-
-| Repository | Context |
-| --- | --- |
-| [miscellaneous](https://github.com/arielabade/miscellaneous) | Curated implementations across paradigms, software engineering, data and infrastructure. |
-
----
-
-## How I work
-
-| | |
-| --- | --- |
-| **Measure before claiming** | Separate fact, insight and hypothesis. A metric with no stated definition is not a metric. |
-| **Validate, then scale** | Scaling before validating only multiplies what is not yet adjusted. |
-| **State the limitation** | Every case in this portfolio ends with what it cannot show. An analysis that hides its boundaries is not an analysis. |
-| **Build for the next decision** | Every deliverable should point at the next move, not only at the last result. |
+### [ab-testing-toolkit](https://github.com/arielabade/ab-testing-toolkit)
+**Business problem** · Whether an experiment can answer its question, and what to do with the answer.
+**Key result** · Separates "we tested and found nothing" from "we never had the power to find it",
+which lead to opposite actions. CUPED with a 0.87-correlated covariate cuts variance 75%, worth 4x the
+traffic. The false-positive rate is validated against 2,000 simulated A/A tests.
+**Stack** · NumPy, SciPy, statsmodels.
 
 ---
 
-## What I build
+## Also here
 
-- **Measurement and attribution layers** — tracking design, event governance, data quality
-- **Analytics systems**, dashboards and decision-support structures
-- **Machine learning models** for classification, prediction and sequence analysis
-- **AI-powered products** and intelligent workflows
-- **Automation pipelines** with Python, APIs and workflow orchestration
-- **Growth and performance frameworks** for SaaS and digital products
-
-**Core areas:** Machine Learning · Applied AI · Growth Analytics · SaaS Performance · Data
-Automation · NLP & LLM Systems · Experimentation & Optimization
+- [carbon](https://github.com/arielabade/carbon) — exon/intron classification in human DNA with a
+  bidirectional LSTM, 99.80% test accuracy against three controlled baselines. Developed for a paper
+  accepted at a bioinformatics conference.
+- [visppy-cv](https://github.com/arielabade/visppy-cv) — computer vision for physical spaces, selected
+  in the Centelha Sergipe III preliminary Phase 2 result.
+- [mandacaru](https://github.com/arielabade/mandacaru) — intelligent document processing built in the
+  STI/UFS context.
+- [echo-womens-health-research-analytics](https://github.com/arielabade/echo-womens-health-research-analytics)
+  — survey-based evaluation of a remote women's health training programme.
 
 ---
 
 ## Stack
 
-<p align="center">
-  <img alt="Python" src="https://img.shields.io/badge/Python-050505?style=flat-square&logo=python&logoColor=F6F5F0">
-  <img alt="Pandas" src="https://img.shields.io/badge/Pandas-050505?style=flat-square&logo=pandas&logoColor=F6F5F0">
-  <img alt="NumPy" src="https://img.shields.io/badge/NumPy-050505?style=flat-square&logo=numpy&logoColor=F6F5F0">
-  <img alt="scikit-learn" src="https://img.shields.io/badge/scikit--learn-050505?style=flat-square&logo=scikit-learn&logoColor=F6F5F0">
-  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-050505?style=flat-square&logo=pytorch&logoColor=F6F5F0">
-  <img alt="SciPy" src="https://img.shields.io/badge/SciPy-050505?style=flat-square&logo=scipy&logoColor=F6F5F0">
-  <img alt="R" src="https://img.shields.io/badge/R-050505?style=flat-square&logo=r&logoColor=F6F5F0">
-  <br>
-  <img alt="SQL" src="https://img.shields.io/badge/SQL-1B1C1F?style=flat-square&logo=postgresql&logoColor=F6F5F0">
-  <img alt="Django" src="https://img.shields.io/badge/Django-1B1C1F?style=flat-square&logo=django&logoColor=F6F5F0">
-  <img alt="Flutter" src="https://img.shields.io/badge/Flutter-1B1C1F?style=flat-square&logo=flutter&logoColor=F6F5F0">
-  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-1B1C1F?style=flat-square&logo=html5&logoColor=F6F5F0">
-  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1B1C1F?style=flat-square&logo=css3&logoColor=F6F5F0">
-</p>
+**Analytics** · SQL · Python · pandas · DuckDB · dbt
+**ML** · scikit-learn · LightGBM · PyMC-Marketing · MLflow
+**Engineering** · FastAPI · Docker · GitHub Actions
+**Marketing** · GA4 · Meta Ads · Google Ads
 
 ---
 
-## The visual system
+## How I work
 
-Every repository here runs on one system, so the portfolio reads as a body of work rather than a
-collection of accidents.
+Every project here states what it cannot show. The limitations sections are not boilerplate: they
+carry the assumptions that would change the conclusion, the data that is simulated and why, and the
+question the analysis was not able to answer. A result without its boundary is not a result.
 
-| Token | Hex | Role |
-| --- | --- | --- |
-| Carbon | `#050505` | Foundation, backgrounds, authority |
-| Ivory | `#F6F5F0` | Breathing room, editorial surfaces |
-| Graphite | `#1B1C1F` | Text and secondary surfaces |
-| Steel | `#7E8791` | Metadata, support, interface |
-| Cobalt | `#5B6CFF` | Action, direction — the single accent |
-| Aurum | `#C8B680` | Reserved for special emphasis |
-
-Roughly 70% neutrals, 20% support, 10% accent. Charts start in neutrals and use Cobalt only on the
-series that answers the question. Headers ship in both themes and carry outlined type, so they render
-identically everywhere. Repositories with their own brand — Visppy, Mandacaru — keep it: the
-portfolio integrates with them in monochrome rather than competing.
-
-Typography is a single family, **Lato**, across headlines, body and figures.
+Where a number is assumed rather than measured, it is named and isolated in one file, so a reviewer
+can change it and re-run.
 
 ---
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/ariel-abade-669869171/">LinkedIn</a>
-  &nbsp;·&nbsp;
-  <a href="https://github.com/arielabade">GitHub</a>
-</p>
+- [LinkedIn](https://www.linkedin.com/in/ariel-abade-669869171/)
+- [Portfolio](https://arielabade.github.io/abade/)
+
+---
+
+## Em português
+
+Trabalho na junção entre marketing e receita: mensuração confiável, análise que sobrevive a
+questionamento, e modelos que terminam numa decisão — CAC, LTV, payback, margem de contribuição,
+retenção e incrementalidade.
+
+Cerca de cinco anos entre mídia paga, growth em SaaS e analytics. O diferencial é construir a
+ferramenta, não parar no relatório: os projetos acima têm código rodando, testes e documentação de
+premissas, não notebooks soltos.
+
+Cada projeto declara o que **não** consegue mostrar. É de propósito: premissa escondida é a forma mais
+cara de errar uma decisão de investimento.
