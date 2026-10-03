@@ -1,9 +1,4 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/header-dark.svg">
-    <img alt="Ariel Abade: growth, data science and machine learning applied to revenue" src="assets/brand/header-light.svg" width="100%">
-  </picture>
-</p>
+<p align="center"><img alt="Ariel Abade: growth, data science and machine learning applied to revenue" src="assets/brand/header.svg" width="100%"></p>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/ariel-abade-669869171/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Ariel_Abade-5B6CFF?style=flat-square&labelColor=050505"></a>
@@ -19,12 +14,7 @@ number and the finance number had to agree. What I am useful for is the join: co
 behaviour to CAC, LTV, payback and contribution margin, then building the thing that computes it instead
 of stopping at the recommendation.
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/kpis-dark.svg">
-    <img alt="About five years in growth; 15 public case studies; method: validate, scale, retain" src="assets/brand/kpis-light.svg" width="100%">
-  </picture>
-</p>
+<p align="center"><img alt="About five years in growth; 15 public case studies; method: validate, scale, retain" src="assets/brand/kpis.svg" width="100%"></p>
 
 ---
 
@@ -34,12 +24,7 @@ Every repository answers one question in a growth system: **validate** that the 
 **scale** what works, **retain** the value it creates. A fourth track holds applied research and
 products.
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/map-dark.svg">
-    <img alt="Portfolio map. Validate: tracking-attribution-lab, ab-testing-toolkit, marketing-mix-modeling. Scale: unit-economics-olist, paid-media-budget-optimizer, lead-scoring-api, growth-analytics-warehouse, marketing-analytics-portfolio. Retain: clv-cohort-prediction, churn-cost-sensitive. Build: carbon, visppy-cv, mandacaru, echo research analytics, abade" src="assets/brand/map-light.svg" width="100%">
-  </picture>
-</p>
+<p align="center"><img alt="Portfolio map. Validate: tracking-attribution-lab, ab-testing-toolkit, marketing-mix-modeling. Scale: unit-economics-olist, paid-media-budget-optimizer, lead-scoring-api, growth-analytics-warehouse, marketing-analytics-portfolio. Retain: clv-cohort-prediction, churn-cost-sensitive. Build: carbon, visppy-cv, mandacaru, echo research analytics, abade" src="assets/brand/map.svg" width="100%"></p>
 
 Every case follows the same arc: **Context → Problem → Strategy → Result**, followed by its limits and
 the next move.

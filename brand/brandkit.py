@@ -292,12 +292,12 @@ def portfolio_map(dark: bool, columns: dict[str, list[tuple[str, str]]]) -> str:
 
 
 def emit(out: Path, name: str, fn, *args, **kw) -> None:
+    """One Carbon-panel variant per asset: it reads on light and dark pages alike, with no
+    dependence on <picture>/prefers-color-scheme (which follows the OS, not the GitHub theme)."""
     out.mkdir(parents=True, exist_ok=True)
-    for mode in ("light", "dark"):
-        (out / f"{name}-{mode}.svg").write_text(fn(mode == "dark", *args, **kw), encoding="utf-8")
+    (out / f"{name}.svg").write_text(fn(True, *args, **kw), encoding="utf-8")
 
 
 def picture(path: str, alt: str, w: str = "100%") -> str:
-    """The README snippet for a themed asset pair."""
-    return (f'<p align="center">\n  <picture>\n    <source media="(prefers-color-scheme: dark)" srcset="{path}-dark.svg">\n'
-            f'    <img alt="{alt}" src="{path}-light.svg" width="{w}">\n  </picture>\n</p>')
+    """The README snippet for an asset."""
+    return f'<p align="center"><img alt="{alt}" src="{path}.svg" width="{w}"></p>'
