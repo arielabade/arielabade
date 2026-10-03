@@ -25,7 +25,7 @@ COBALT, AURUM, POSITIVE, ATTENTION, RISK = "#5B6CFF", "#C8B680", "#52D6A5", "#E6
 def theme(dark: bool) -> dict:
     if dark:
         return dict(bg=CARBON, fg=IVORY, sub="#9BA2AA", muted="#3A3E46", card=GRAPHITE, line="#2C2F35", on_accent="#FFFFFF")
-    return dict(bg=IVORY, fg=CARBON, sub="#5C646D", muted="#C5CAD0", card=IVORY, line="#E2E0D8", on_accent="#FFFFFF")
+    return dict(bg=IVORY, fg=CARBON, sub="#5C646D", muted="#C5CAD0", card="#FFFFFF", line="#E2E0D8", on_accent="#FFFFFF")
 
 
 @lru_cache(None)
@@ -83,8 +83,12 @@ def symbol(x: float, y: float, h: float, fill: str) -> str:
     return f'<path transform="translate({x:.1f} {y:.1f}) scale({k:.4f})" d="{SYM_D}" fill="{fill}" fill-rule="evenodd"/>'
 
 
-def svg(w: int, h: int, body: str, label: str, bg: str | None = None) -> str:
-    rect = f'<rect width="{w}" height="{h}" fill="{bg}"/>' if bg else ""
+def svg(w: int, h: int, body: str, label: str, bg: str | None = None, pad: int = 0) -> str:
+    """pad > 0 draws a rounded background panel, so the asset reads on any page colour."""
+    if pad:
+        body = f'<g transform="translate({pad} {pad})">{body}</g>'
+        w, h = w + 2 * pad, h + 2 * pad
+    rect = f'<rect width="{w}" height="{h}" rx="{24 if pad else 0}" fill="{bg}"/>' if bg else ""
     defs = "".join(f'<path id="{g}" d="{d}"/>' for g, d in _GLYPHS.items())
     _GLYPHS.clear()
     defs = f"<defs>{defs}</defs>" if defs else ""
@@ -140,7 +144,7 @@ def kpis(dark: bool, items: list[tuple[str, str, str]]) -> str:
         for j, ln in enumerate(nl):
             body.append(text(ln, x + 36, 178 + j * 27, 19, t["sub"]))
     lab = "; ".join(f"{l}: {v} ({n})" for l, v, n in items)
-    return svg(W, H, "".join(body), lab)
+    return svg(W, H, "".join(body), lab, t["bg"], pad=48)
 
 
 # ---------------------------------------------------------------- case arc (the framework)
@@ -168,7 +172,7 @@ def arc(dark: bool, texts: list[str]) -> str:
             body.append(text(ln, x + colw / 2, 112 + j * 29, 20, t["fg"] if last else t["sub"],
                              "Bold" if last else "Regular", anchor="middle"))
     lab = " → ".join(f"{n}: {s}" for n, s in zip(STEPS, texts))
-    return svg(W, H, "".join(body), lab)
+    return svg(W, H, "".join(body), lab, t["bg"], pad=48)
 
 
 # ---------------------------------------------------------------- horizontal bar chart
@@ -232,7 +236,7 @@ def bars(dark: bool, title: str, subtitle: str, rows: list[tuple], fmt: str = "{
         body.append(text(source, 0, y, 16, t["sub"]))
     H = int(y + 16)
     lab = f"{title}. " + "; ".join(f"{l}: {v}" for l, v in rows)
-    return svg(W, H, "".join(body), lab)
+    return svg(W, H, "".join(body), lab, t["bg"], pad=48)
 
 
 # ---------------------------------------------------------------- method track (footer)
@@ -256,7 +260,7 @@ def track(dark: bool, stage: str | None) -> str:
         if i < 2:
             body.append(arrow(x + colw + 14, 40, x + colw + gap - 14, t["sub"], 2))
     lab = f"ABADE method: validate, scale, retain, build. This repository: {stage or 'portfolio'}"
-    return svg(W, H, "".join(body), lab)
+    return svg(W, H, "".join(body), lab, t["bg"], pad=48)
 
 
 # ---------------------------------------------------------------- portfolio map (profile)
@@ -284,7 +288,7 @@ def portfolio_map(dark: bool, columns: dict[str, list[tuple[str, str]]]) -> str:
             for k, ln in enumerate(wrap(line, 16, colw - 40)[:2]):
                 body.append(text(ln, x + 20, yy + 66 + k * 22, 16, t["sub"]))
     lab = "; ".join(f"{k}: {', '.join(r for r, _ in v)}" for k, v in columns.items())
-    return svg(W, H, "".join(body), lab)
+    return svg(W, H, "".join(body), lab, t["bg"], pad=48)
 
 
 def emit(out: Path, name: str, fn, *args, **kw) -> None:
