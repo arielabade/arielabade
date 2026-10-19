@@ -334,6 +334,14 @@ GLYPHS = {
                            f'L{40 + 28 * math.cos(a):.1f} {40 + 28 * math.sin(a):.1f}"/>'
                            f'<circle cx="{40 + 33 * math.cos(a):.1f}" cy="{40 + 33 * math.sin(a):.1f}" r="5"/>'
                            for a in [-1.5708 + i * 1.2566 for i in range(5)]),
+    # results: bars climbing to a target flag
+    "results": '<path d="M8 72 H74" stroke-opacity="0.4"/><rect x="12" y="52" width="10" height="20" rx="2"/>'
+               '<rect x="30" y="40" width="10" height="32" rx="2"/><rect x="48" y="26" width="10" height="46" rx="2" fill="{c}"/>'
+               '<path d="M66 72 V8"/><path d="M66 8 H78 L74 14 L78 20 H66" fill="{c}" stroke-linejoin="round"/>',
+    # a 3x3 grid of reusable steps, one path highlighted
+    "frameworks": "".join(f'<rect x="{8 + col * 24}" y="{8 + row * 24}" width="16" height="16" rx="3" '
+                          + ('fill="{c}"' if row == col else 'stroke-opacity="0.55"') + "/>"
+                          for row in range(3) for col in range(3)),
 }
 
 
@@ -356,3 +364,27 @@ def mark(dark: bool, glyph: str, step: str, name: str, result: str, note: str, w
     for i, ln in enumerate(wrap(note, 21, W - 8)[:1]):
         body.append(text(ln, 0, 170 + len(rl) * 36 + 8 + i * 30, 21, t["sub"]))
     return svg(W, H, "".join(body), f"{name}: {step}. {result}. {note}", t["bg"], pad=40)
+
+
+def block(dark: bool, glyph: str, eyebrow: str, name: str, line: str, note: str, square: bool = False) -> str:
+    """A profile section block: a wide banner (data, frameworks) or a square stage tile."""
+    t = theme(dark)
+    W, H = (360, 360) if square else (1520, 200)
+    g = GLYPHS[glyph].replace("{c}", COBALT)
+    body = [f'<rect x="0" y="0" width="112" height="112" rx="28" fill="{t["card"]}"/>',
+            f'<g transform="translate(16 16)" fill="none" stroke="{COBALT}" stroke-width="5" stroke-linecap="round">{g}</g>']
+    if square:
+        body.append(text(eyebrow.upper(), 0, 168, 17, COBALT, "Bold", tracking=3))
+        ns = 48
+        while width(name, ns, "Black") > W and ns > 28:
+            ns -= 1
+        body.append(text(name, 0, 222, ns, t["fg"], "Black"))
+        for i, ln in enumerate(wrap(line, 23, W, "Bold")[:2]):
+            body.append(text(ln, 0, 270 + i * 32, 23, t["fg"], "Bold"))
+        body.append(text(note, 0, 352, 18, t["sub"]))
+    else:
+        body.append(text(eyebrow.upper(), 140, 40, 17, COBALT, "Bold", tracking=3))
+        body.append(text(name, 140, 98, 56, t["fg"], "Black"))
+        body.append(text(line, 0, 160, 27, t["fg"], "Bold"))
+        body.append(text(note, 0, 196, 21, t["sub"]))
+    return svg(W, H, "".join(body), f"{name}: {eyebrow}. {line}. {note}", t["bg"], pad=40)

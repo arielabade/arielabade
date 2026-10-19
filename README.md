@@ -25,38 +25,36 @@ Systems from UFS, where I also did machine-learning research.
 
 ---
 
-## Follow one marketing dollar
+## How the work fits together
 
-Each project below answers one question that a marketing dollar runs into, from the moment it is spent to
-the moment the customer it bought either stays or leaves. Click a card to open the case.
+Everything starts from **data** that can be trusted, moves through four stages that each answer one
+question about a marketing dollar, and ends in **frameworks** that turn the method into routine work.
+Click a block to open its main case.
 
 <p align="center">
-  <a href="https://github.com/arielabade/marketing-mix-modeling"><img alt="01 Where to spend: Marketing Mix Modeling" src="assets/brand/projects/marketing-mix-modeling.svg" width="32%"></a>
-  <a href="https://github.com/arielabade/unit-economics-olist"><img alt="02 Does the channel pay: Unit Economics" src="assets/brand/projects/unit-economics-olist.svg" width="32%"></a>
-  <a href="https://github.com/arielabade/lead-scoring-api"><img alt="03 Who to work first: Lead Scoring API" src="assets/brand/projects/lead-scoring-api.svg" width="32%"></a>
+  <a href="https://github.com/arielabade/growth-analytics-warehouse"><img alt="Dados: one tested data layer under every decision" src="assets/brand/blocks/dados.svg" width="98%"></a>
 </p>
 <p align="center">
-  <a href="https://github.com/arielabade/ab-testing-toolkit"><img alt="04 Did it work: A/B Testing Toolkit" src="assets/brand/projects/ab-testing-toolkit.svg" width="32%"></a>
-  <a href="https://github.com/arielabade/clv-cohort-prediction"><img alt="05 What a customer is worth: CLV Prediction" src="assets/brand/projects/clv-cohort-prediction.svg" width="32%"></a>
-  <a href="https://github.com/arielabade/churn-cost-sensitive"><img alt="06 Who to keep: Cost-Sensitive Churn" src="assets/brand/projects/churn-cost-sensitive.svg" width="32%"></a>
+  <a href="https://github.com/arielabade/ab-testing-toolkit"><img alt="01 Validate: did the channel or the change cause it?" src="assets/brand/blocks/validate.svg" width="24%"></a>
+  <a href="https://github.com/arielabade/unit-economics-olist"><img alt="02 Scale: which channel and lead pay for themselves?" src="assets/brand/blocks/scale.svg" width="24%"></a>
+  <a href="https://github.com/arielabade/clv-cohort-prediction"><img alt="03 Retention: who is worth keeping, and at what cost?" src="assets/brand/blocks/retention.svg" width="24%"></a>
+  <a href="https://github.com/arielabade/paid-media-budget-optimizer"><img alt="04 Results: where does the next unit of budget go?" src="assets/brand/blocks/results.svg" width="24%"></a>
 </p>
 <p align="center">
-  <a href="https://github.com/arielabade/growth-analytics-warehouse"><img alt="All of it, end to end: Growth Analytics Warehouse" src="assets/brand/projects/growth-analytics-warehouse.svg" width="65%"></a>
+  <img alt="Frameworks: 14 operational frameworks for growth, RevOps, paid media and data" src="assets/brand/blocks/frameworks.svg" width="98%">
 </p>
+
+| Block | Projects |
+|---|---|
+| **Dados** | [growth-analytics-warehouse](https://github.com/arielabade/growth-analytics-warehouse) · [tracking-attribution-lab](https://github.com/arielabade/tracking-attribution-lab) · [dados-sinteticos-ecommerce-tecidos](https://github.com/arielabade/dados-sinteticos-ecommerce-tecidos) · [dados-sinteticos-streaming-cinelume](https://github.com/arielabade/dados-sinteticos-streaming-cinelume) |
+| **Validate** | [marketing-mix-modeling](https://github.com/arielabade/marketing-mix-modeling): perfect channel ranking against a known truth · [ab-testing-toolkit](https://github.com/arielabade/ab-testing-toolkit): CUPED cuts variance 75% |
+| **Scale** | [unit-economics-olist](https://github.com/arielabade/unit-economics-olist): paid search eats 71% of first-order margin · [lead-scoring-api](https://github.com/arielabade/lead-scoring-api): 1.54x lift once two leaks are removed |
+| **Retention** | [clv-cohort-prediction](https://github.com/arielabade/clv-cohort-prediction): top 10% of customers hold 51% of future value · [churn-cost-sensitive](https://github.com/arielabade/churn-cost-sensitive): £10,285 recovered by the decision rule alone |
+| **Results** | [paid-media-budget-optimizer](https://github.com/arielabade/paid-media-budget-optimizer): headroom, not efficiency alone, decides where budget grows · [marketing-analytics-portfolio](https://github.com/arielabade/marketing-analytics-portfolio): from campaign report to decision |
+| **Frameworks** | Diagnosis, RevOps funnel, paid-media audit, creative matrix, A/B cadence, unit economics, UTM governance, monthly media report, RFM, growth loops |
 
 Every case opens with the decision it supports and ends with what it **cannot** show. A hidden
 assumption is the most expensive way to get an investment decision wrong.
-
-<details>
-<summary><b>More on measurement and paid media</b></summary>
-<br>
-
-- [tracking-attribution-lab](https://github.com/arielabade/tracking-attribution-lab): five named event states and SQL checks that catch tracking loss before it reaches a CPA.
-- [paid-media-budget-optimizer](https://github.com/arielabade/paid-media-budget-optimizer): a transparent campaign score where headroom, not efficiency alone, decides where budget grows.
-- [marketing-analytics-portfolio](https://github.com/arielabade/marketing-analytics-portfolio): one KPI layer and one case format that turns a campaign report into a decision.
-- [dados-sinteticos-ecommerce-tecidos](https://github.com/arielabade/dados-sinteticos-ecommerce-tecidos) and [dados-sinteticos-streaming-cinelume](https://github.com/arielabade/dados-sinteticos-streaming-cinelume): synthetic Brazilian businesses (Meta and Google Ads, GA4, CAPI, attribution, MySQL and dbt) for practising acquisition analytics on production-shaped data. In Portuguese.
-
-</details>
 
 <details>
 <summary><b>Research and products, outside marketing</b></summary>
