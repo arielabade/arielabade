@@ -6,9 +6,9 @@ Needs fontTools and the Lato TTFs in ~/.local/share/fonts.
 import sys
 from pathlib import Path
 
-from brandkit import COBALT, RISK, arc, bars, emit, header, kpis, portfolio_map, symbol, track, svg, IVORY, CARBON
+from brandkit import COBALT, RISK, arc, bars, emit, header, kpis, mark, portfolio_map, symbol, track, svg, IVORY, CARBON
 
-REPOS = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[2]
+REPOS = Path(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1] != "--profile" else Path(__file__).resolve().parents[2]
 
 SPEC = {
     "unit-economics-olist": dict(
@@ -240,6 +240,37 @@ SPEC = {
         chart=None),
 }
 
+# The profile follows one marketing dollar: where to spend it, whether the channel pays it back, who to
+# work first, whether the change worked, what the customer is worth and who to keep.
+MARKS = [
+    ("marketing-mix-modeling", "mmm", "01 · Where to spend", "Marketing Mix Modeling",
+     "Perfect channel ranking against a known truth", "Bayesian MMM, adstock and saturation"),
+    ("unit-economics-olist", "unit", "02 · Does the channel pay", "Unit Economics",
+     "Paid search eats 71% of first-order margin", "CAC, LTV and payback by channel, DuckDB SQL"),
+    ("lead-scoring-api", "lead", "03 · Who to work first", "Lead Scoring API",
+     "1.54x lift once two leaks are removed", "Calibrated, served over FastAPI and Docker"),
+    ("ab-testing-toolkit", "ab", "04 · Did it work", "A/B Testing Toolkit",
+     "CUPED cuts variance 75%, worth 4x the traffic", "Tells 'no effect' apart from 'no power'"),
+    ("clv-cohort-prediction", "clv", "05 · What a customer is worth", "CLV Prediction",
+     "Top 10% of customers hold 51% of future value", "BG/NBD + Gamma-Gamma beats LightGBM"),
+    ("churn-cost-sensitive", "churn", "06 · Who to keep", "Cost-Sensitive Churn",
+     "£10,285 recovered by the decision rule alone", "Thresholds from retention economics"),
+]
+WIDE = ("growth-analytics-warehouse", "warehouse", "All of it, end to end", "Growth Analytics Warehouse",
+        "From paid-media spend to LTV/CAC by country, on one tested warehouse",
+        "Synthetic SaaS · DuckDB snowflake schema · 68 data-quality checks · SQL catalog · Dash app")
+
+
+def profile() -> None:
+    out = REPOS / "arielabade" / "assets" / "brand"
+    emit(out, "header", header, "Marketing Data Scientist", "Ariel Abade",
+         "Paid-media acquisition, revenue modelling and growth analytics.")
+    for repo, glyph, *card in MARKS:
+        emit(out / "projects", repo, mark, glyph, *card)
+    repo, glyph, *card = WIDE
+    emit(out / "projects", repo, mark, glyph, *card, wide=True)
+
+
 PORTFOLIO = {
     "Validate": [("tracking-attribution-lab", "Can the event layer be trusted?"),
                  ("ab-testing-toolkit", "Did the change cause the lift?"),
@@ -272,17 +303,11 @@ def main() -> None:
         if s["chart"]:
             c = dict(s["chart"])
             emit(out, "chart", bars, c.pop("title"), c.pop("subtitle"), c.pop("rows"), **c)
-    out = REPOS / "arielabade" / "assets" / "brand"
-    emit(out, "header", header, "Strategy · Data · Growth", "Ariel Abade",
-         "Growth, data science and machine learning applied to revenue.")
-    emit(out, "kpis", kpis, [("Years in growth", "~5", "paid media, SaaS growth and analytics"),
-                             ("Public case studies", "15", "each with code, tests or documented limits"),
-                             ("Method", "3 steps", "validate, scale, retain")])
-    emit(out, "map", portfolio_map, PORTFOLIO)
+    profile()
     tile = symbol_tile()
     for p in ("growth-analytics-warehouse/assets/brand/symbol.svg", "growth-analytics-warehouse/app/assets/symbol.svg"):
         (REPOS / p).write_text(tile, encoding="utf-8")
 
 
 if __name__ == "__main__":
-    main()
+    profile() if "--profile" in sys.argv else main()

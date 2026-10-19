@@ -6,6 +6,7 @@ highlighted series, direct labels, no gridlines or legends where a label can do 
 """
 from __future__ import annotations
 
+import math
 from functools import lru_cache
 from pathlib import Path
 
@@ -301,3 +302,57 @@ def emit(out: Path, name: str, fn, *args, **kw) -> None:
 def picture(path: str, alt: str, w: str = "100%") -> str:
     """The README snippet for an asset."""
     return f'<p align="center"><img alt="{alt}" src="{path}.svg" width="{w}"></p>'
+
+
+# ---------------------------------------------------------------- project marks (profile logos)
+# Each glyph is drawn in an 80x80 box, as strokes in the accent colour, so the set reads as one family.
+GLYPHS = {
+    # saturation curve over adstocked spend
+    "mmm": '<path d="M8 72 H74" stroke-opacity="0.4"/><path d="M10 68 C26 30 44 16 72 12"/>'
+           '<circle cx="22" cy="46" r="3.5" fill="{c}"/><circle cx="38" cy="27" r="3.5" fill="{c}"/>'
+           '<circle cx="58" cy="16" r="3.5" fill="{c}"/>',
+    # channels rising past a dashed break-even line
+    "unit": '<path d="M8 40 H74" stroke-dasharray="5 6" stroke-opacity="0.55"/>'
+            '<rect x="12" y="50" width="12" height="22" rx="2"/><rect x="34" y="36" width="12" height="36" rx="2"/>'
+            '<rect x="56" y="14" width="12" height="58" rx="2" fill="{c}"/>',
+    # funnel ending in a single lead
+    "lead": '<path d="M8 12 H72 L48 42 V66 L32 72 V42 Z" stroke-linejoin="round"/>'
+            '<circle cx="40" cy="22" r="3.5" fill="{c}"/>',
+    # two overlapping distributions, B shifted right
+    "ab": '<path d="M6 70 C20 70 22 22 32 22 C42 22 44 70 58 70" stroke-opacity="0.45"/>'
+          '<path d="M22 70 C36 70 38 14 48 14 C58 14 60 70 74 70"/><path d="M6 72 H74" stroke-opacity="0.4"/>',
+    # cohort triangle fading with age
+    "clv": "".join(f'<rect x="{8 + col * 17}" y="{8 + row * 17}" width="13" height="13" rx="2" fill="{{c}}" '
+                   f'fill-opacity="{max(0.12, 1 - col * 0.24):.2f}" stroke="none"/>'
+                   for row in range(4) for col in range(4 - row)),
+    # calibrated churn curve crossing a decision threshold
+    "churn": '<path d="M8 70 C34 70 40 12 72 12"/><path d="M48 6 V76" stroke-dasharray="5 6" stroke-opacity="0.55"/>'
+             '<circle cx="48" cy="34" r="4.5" fill="{c}"/>',
+    # snowflake schema: one fact, five dimensions
+    "warehouse": '<circle cx="40" cy="40" r="9" fill="{c}"/>'
+                 + "".join(f'<path d="M{40 + 13 * math.cos(a):.1f} {40 + 13 * math.sin(a):.1f} '
+                           f'L{40 + 28 * math.cos(a):.1f} {40 + 28 * math.sin(a):.1f}"/>'
+                           f'<circle cx="{40 + 33 * math.cos(a):.1f}" cy="{40 + 33 * math.sin(a):.1f}" r="5"/>'
+                           for a in [-1.5708 + i * 1.2566 for i in range(5)]),
+}
+
+
+def mark(dark: bool, glyph: str, step: str, name: str, result: str, note: str, wide: bool = False) -> str:
+    """A logo card for one project: glyph, the question it answers, its name and its headline result."""
+    t = theme(dark)
+    W = 1040 if wide else 480
+    H = 226 if wide else 262  # fits two result lines and one note line on the narrow card
+    g = GLYPHS[glyph].replace("{c}", COBALT)
+    body = [f'<rect x="0" y="0" width="112" height="112" rx="28" fill="{t["card"]}"/>',
+            f'<g transform="translate(16 16)" fill="none" stroke="{COBALT}" stroke-width="5" stroke-linecap="round">{g}</g>',
+            text(step.upper(), 140, 46, 17, COBALT, "Bold", tracking=3)]
+    ns = 34
+    while width(name, ns, "Black") > W - 140 and ns > 22:
+        ns -= 1
+    body.append(text(name, 140, 92, ns, t["fg"], "Black"))
+    rl = wrap(result, 27, W - 8, "Bold")[:2]
+    for i, ln in enumerate(rl):
+        body.append(text(ln, 0, 170 + i * 36, 27, t["fg"], "Bold"))
+    for i, ln in enumerate(wrap(note, 21, W - 8)[:1]):
+        body.append(text(ln, 0, 170 + len(rl) * 36 + 8 + i * 30, 21, t["sub"]))
+    return svg(W, H, "".join(body), f"{name}: {step}. {result}. {note}", t["bg"], pad=40)
